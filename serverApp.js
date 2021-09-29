@@ -45,4 +45,6 @@ app.use(async (ctx) => {
             break;
     }
 });
-http.createServer(app.callback()).listen(9091);
+
+const port = process.env.PORT || 9091;
+http.createServer(app.callback()).listen(port);

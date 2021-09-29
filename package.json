@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@babel/core": "^7.15.5",
+        "heroku": "^7.59.0",
         "koa": "^2.13.1",
         "koa-body": "^4.2.0",
         "koa-bodyparser": "^4.3.0",
