@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import http from 'http';
 import Koa from 'koa';
 import koaBody from 'koa-body';
@@ -18,31 +19,30 @@ app.use(async (ctx) => {
     });
 
     switch (method) {
-        case 'initTable':
-            ctx.response.body = dbHandler.ticketsFull;
-            break;
-        case 'allTickets':
-            ctx.response.body = dbHandler.tickets;
-            break;
-        case 'createTicket':
-            const { descShort, descLong } = ctx.request.body;
-            ctx.response.body = dbHandler.createTicket(descShort, descLong);
-            break;
-        case 'updateTicket':
-            ctx.response.body = dbHandler.updateTicket(ctx.request.body);
-            break;
-        case 'updateStatus':
-            const { id, status } = ctx.request.body;
-            ctx.response.body = dbHandler.updateStatus(id, status);
-            break;
-        case 'removeTicket': {
-            const { id } = ctx.request.body;
-            ctx.response.body = dbHandler.removeTicket(id);
-            break;
-        }
-        default:
-            ctx.response.status = 404;
-            break;
+    case 'initTable':
+        ctx.response.body = dbHandler.ticketsFull;
+        break;
+    case 'allTickets':
+        ctx.response.body = dbHandler.tickets;
+        break;
+    case 'createTicket':
+        const { descShort, descLong } = ctx.request.body;
+        ctx.response.body = dbHandler.createTicket(descShort, descLong);
+        break;
+    case 'updateTicket':
+        ctx.response.body = dbHandler.updateTicket(ctx.request.body);
+        break;
+    case 'updateStatus':
+        const { id, status } = ctx.request.body;
+        ctx.response.body = dbHandler.updateStatus(id, status);
+        break;
+    case 'removeTicket':
+        const { id: delId } = ctx.request.body;
+        ctx.response.body = dbHandler.removeTicket(delId);
+        break;
+    default:
+        ctx.response.status = 404;
+        break;
     }
 });
 

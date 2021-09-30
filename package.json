@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "ISC",
     "scripts": {
-        "lint": "eslint",
+        "lint": "eslint .",
         "prestart": "yarn",
         "dev": "nodemon --exec babel-node --inspect serverApp.js",
         "start": "nodemon --exec babel-node serverApp.js"
